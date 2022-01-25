@@ -33,6 +33,7 @@ public class Program
 
         Console.WriteLine(tokenResponse.Json);
         Console.WriteLine("\n\n");
+      
 
         // call api
         var apiClient = new HttpClient();
@@ -48,5 +49,7 @@ public class Program
             var content = await response.Content.ReadAsStringAsync();
             Console.WriteLine(JArray.Parse(content));
         }
+
+        Console.ReadKey();
     }
 }

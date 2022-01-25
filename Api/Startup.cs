@@ -28,6 +28,7 @@ namespace Api
         {
             services.AddControllers();
 
+            //Solo aplicaciones clientes con el token emitido por nuestro IDP IdentityServer podran acceder a lo que requiera autorizacion en nuestra api
             services.AddAuthentication("Bearer")
         .AddJwtBearer("Bearer", options =>
         {
@@ -38,6 +39,16 @@ namespace Api
                 ValidateAudience = false
             };
         });
+
+            //Esto es para verificar que el IDP valido que el cliente tiene acceso a ese scope
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiScope", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "api1");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +68,8 @@ namespace Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers()
+                .RequireAuthorization("ApiScope");
             });
         }
     }
