@@ -32,6 +32,15 @@ namespace IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
+            services.AddAuthentication()
+    .AddGoogle("Google", options =>
+    {
+        options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+        options.ClientId = "<insert here>";
+        options.ClientSecret = "<insert here>";
+    });
         }
 
         public void Configure(IApplicationBuilder app)

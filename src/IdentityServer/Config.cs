@@ -14,7 +14,8 @@ namespace IdentityServer
             new IdentityResource[]
             {
                new IdentityResources.OpenId(),
-        new IdentityResources.Profile()
+        new IdentityResources.Profile(),
+        new IdentityResources.Address()
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -64,7 +65,8 @@ namespace IdentityServer
             AllowedScopes = new List<string>
             {
                 IdentityServerConstants.StandardScopes.OpenId,
-                IdentityServerConstants.StandardScopes.Profile
+                IdentityServerConstants.StandardScopes.Profile,
+                 IdentityServerConstants.StandardScopes.Address
             }
         }
 

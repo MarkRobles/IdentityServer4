@@ -44,6 +44,7 @@ namespace MvcClient
 
                     options.SaveTokens = true;// used to persist the tokens from IdentityServer in the cookie (as they will be needed later).
                     options.Scope.Add("profile");
+                    options.Scope.Add("address");
                     options.GetClaimsFromUserInfoEndpoint = true;
                 });
         }
