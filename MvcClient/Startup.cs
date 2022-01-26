@@ -43,6 +43,8 @@ namespace MvcClient
                     options.ResponseType = "code";
 
                     options.SaveTokens = true;// used to persist the tokens from IdentityServer in the cookie (as they will be needed later).
+                    options.Scope.Add("profile");
+                    options.GetClaimsFromUserInfoEndpoint = true;
                 });
         }
 
