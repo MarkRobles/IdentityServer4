@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityServer4;
 using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,8 +39,8 @@ namespace IdentityServer
     {
         options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
-        options.ClientId = "<insert here>";
-        options.ClientSecret = "<insert here>";
+        options.ClientId = "392679803431-gojma7074podar24rfpnm5crouhadiec.apps.googleusercontent.com";
+        options.ClientSecret = "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";
     });
         }
 
