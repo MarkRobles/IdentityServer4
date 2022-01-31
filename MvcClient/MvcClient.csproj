@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	  <AllowUntrustedCertificate>True</AllowUntrustedCertificate>
+	  <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
 	  <UserSecretsId>45f46781-ea9c-4b69-bcb3-cc01f85df029</UserSecretsId>
   </PropertyGroup>
 

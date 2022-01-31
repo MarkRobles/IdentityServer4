@@ -32,7 +32,7 @@ namespace Api
             services.AddAuthentication("Bearer")
         .AddJwtBearer("Bearer", options =>
         {
-            options.Authority = "https://localhost:5001";
+            options.Authority = Configuration.GetValue<string>("BaseIDPAddress");
 
             options.TokenValidationParameters = new TokenValidationParameters
             {
@@ -56,7 +56,7 @@ namespace Api
                 // this defines a CORS policy called "default"
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("https://localhost:44332")
+                    policy.WithOrigins(Configuration.GetValue<string>("BaseAPIAddress"))
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });

@@ -76,7 +76,7 @@ namespace MvcClient
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}")
-                .RequireAuthorization(); //The RequireAuthorization method disables anonymous access for the entire application. We can also use authorize filter on
+              .RequireAuthorization(); //The RequireAuthorization method disables anonymous access for the entire application. We can also use authorize filter on
                 //at global, by controller or action method
             });
         }
