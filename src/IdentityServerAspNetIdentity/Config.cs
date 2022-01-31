@@ -47,10 +47,12 @@ namespace IdentityServerAspNetIdentity
                 AllowedGrantTypes = GrantTypes.Code,
 
                 // where to redirect to after login
-                RedirectUris = { "https://localhost:44300/signin-oidc" },
+              //  RedirectUris = { "https://localhost:44300/signin-oidc" },
+                RedirectUris = { "https://aliveidea-001-site5.htempurl.com/signin-oidc" },
 
                 // where to redirect to after logout
-                PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
+              //  PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
+                PostLogoutRedirectUris = { "https://aliveidea-001-site5.htempurl.com/signout-callback-oidc" },
 
                 AllowedScopes = new List<string>
                 {
