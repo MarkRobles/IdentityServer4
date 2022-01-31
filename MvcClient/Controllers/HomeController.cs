@@ -44,7 +44,7 @@ namespace MvcClient.Controllers
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var BaseApiAddress = Configuration.GetValue<string>("BaseAPIAddress");
+            var BaseApiAddress = "https://aliveidea-001-site2.htempurl.com/";
             var requestURL = string.Concat(BaseApiAddress,"identity");
             var content = await client.GetStringAsync(requestURL);
 
