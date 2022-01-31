@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MvcClient.Models;
 using Newtonsoft.Json.Linq;
@@ -16,10 +18,13 @@ namespace MvcClient.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        public IConfiguration Configuration { get; }
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger,IConfiguration configuration)
         {
             _logger = logger;
+            Configuration = configuration;
         }
 
         public IActionResult Index()
@@ -31,13 +36,17 @@ namespace MvcClient.Controllers
         {
             return View();
         }
+
+       
         public async Task<IActionResult> CallApi()
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var content = await client.GetStringAsync("https://localhost:44363/identity");
+            var BaseApiAddress = "https://aliveidea-001-site2.htempurl.com/";
+            var requestURL = string.Concat(BaseApiAddress,"identity");
+            var content = await client.GetStringAsync(requestURL);
 
             ViewBag.Json = JArray.Parse(content).ToString();
             return View("json");

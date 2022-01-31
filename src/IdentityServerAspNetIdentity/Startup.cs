@@ -31,7 +31,7 @@ namespace IdentityServerAspNetIdentity
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer("Data Source=SQL5105.site4now.net;Initial Catalog=db_a6ff7d_idp;User Id=db_a6ff7d_idp_admin;Password=Waneke_92"));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

@@ -36,7 +36,7 @@ namespace MvcClient
                 .AddCookie("Cookies")
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = Configuration.GetValue<string>("BaseIDPAddress");
+                    options.Authority = "https://aliveidea-001-site3.htempurl.com/";
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
@@ -76,7 +76,7 @@ namespace MvcClient
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}")
-                .RequireAuthorization(); //The RequireAuthorization method disables anonymous access for the entire application. We can also use authorize filter on
+              .RequireAuthorization(); //The RequireAuthorization method disables anonymous access for the entire application. We can also use authorize filter on
                 //at global, by controller or action method
             });
         }
