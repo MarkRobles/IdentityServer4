@@ -9,6 +9,7 @@ using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
@@ -20,9 +21,12 @@ namespace IdentityServer
     {
         public IWebHostEnvironment Environment { get; }
 
-        public Startup(IWebHostEnvironment environment)
+        public IConfiguration Configuration { get; }
+
+        public Startup(IWebHostEnvironment environment, IConfiguration configuration)
         {
             Environment = environment;
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -54,8 +58,8 @@ namespace IdentityServer
     {
         options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
-        options.ClientId = "392679803431-gojma7074podar24rfpnm5crouhadiec.apps.googleusercontent.com";
-        options.ClientSecret = "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";
+        options.ClientId = Configuration.GetValue<string>("GoogleClientId");
+        options.ClientSecret = Configuration.GetValue<string>("GoogleSecretId");
     });
         }
 

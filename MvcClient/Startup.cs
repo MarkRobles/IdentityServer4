@@ -36,18 +36,17 @@ namespace MvcClient
                 .AddCookie("Cookies")
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "https://localhost:5001";
-
+                    options.Authority = Configuration.GetValue<string>("BaseIDPAddress");
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
 
                     options.SaveTokens = true;// used to persist the tokens from IdentityServer in the cookie (as they will be needed later).
                     options.Scope.Add("profile");
-                    options.Scope.Add("address");
+               //     options.Scope.Add("address");
                     options.Scope.Add("api1");
-                    options.Scope.Add("offline_access");
-                    options.GetClaimsFromUserInfoEndpoint = true;
+                   // options.Scope.Add("offline_access");
+                   // options.GetClaimsFromUserInfoEndpoint = true;
                 });
         }
 
