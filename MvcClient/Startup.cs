@@ -36,7 +36,8 @@ namespace MvcClient
                 .AddCookie("Cookies")
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "https://aliveidea-001-site3.htempurl.com/";
+                    //   options.Authority = "https://aliveidea-001-site3.htempurl.com/";
+                    options.Authority = "https://localhost:5001";
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";

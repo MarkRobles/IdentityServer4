@@ -53,10 +53,10 @@ namespace Api
 
             services.AddCors(options =>
             {
-                // this defines a CORS policy called "default"
-                options.AddPolicy("default", policy =>
+                    // this defines a cors policy called "default"
+                    options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins(Configuration.GetValue<string>("BaseAPIAddress"))
+                    policy.WithOrigins(Configuration.GetValue<string>("baseapiaddress"))
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
@@ -74,15 +74,15 @@ namespace Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors("default");
+         app.UseCors("default");
 
             app.UseAuthentication();
-            app.UseAuthorization();
+           app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers()
-                .RequireAuthorization("ApiScope");
+                endpoints.MapControllers();
+             //   .RequireAuthorization("ApiScope");
             });
         }
     }

@@ -37,14 +37,15 @@ namespace MvcClient.Controllers
             return View();
         }
 
-       
+       [Authorize]
         public async Task<IActionResult> CallApi()
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var BaseApiAddress = "https://aliveidea-001-site2.htempurl.com/";
+           // var BaseApiAddress = "https://aliveidea-001-site2.htempurl.com/";
+            var BaseApiAddress = "https://localhost:44363/";
             var requestURL = string.Concat(BaseApiAddress,"identity");
             var content = await client.GetStringAsync(requestURL);
 
